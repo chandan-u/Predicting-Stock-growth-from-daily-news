@@ -1,0 +1,8 @@
+kaggle_daily_news.sublime-project
+kaggle_daily_news.sublime-workspace
+*.pyc
+out.txt
+./env
+env/
+./env/
+env/lib/python2.7/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so
