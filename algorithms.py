@@ -278,5 +278,5 @@ def ConnvolutionNeuralNetwork(Classifier):
 
 
     
-def lstm()
+        
 

@@ -27,12 +27,16 @@ if __name__ == '__main__':
     UnigramVectorizer = CountVectorizer(lowercase=True, ngram_range=(1, 1), stop_words='english')
     BigramVectorizer = CountVectorizer(lowercase=True, ngram_range=(2, 2), stop_words='english')
 
-    # word2vec vectorizers ( vecotrs capture semantic nature of words)
-    model = gensim.models.Word2Vec(sg=0, sentences= map(word_tokenize, train_X), size=300, window=5)
-    w2v = dict(zip(model.wv.index2word, model.wv.syn0))
-    w2v_train_X, w2v_test_X = getAvgDocVectors(w2v, train_X, train_y)
-    w2v_tfIdf_train_X, w2v_tf_Idf_test_X = getTfIdfWeightedAvgDocVectors(w2v, train_X, train_y)
+    # compute word2vec features ( vecotrs capture semantic nature of words)
+    # model = gensim.models.Word2Vec(sg=0, sentences= map(word_tokenize, train_X), size=300, window=5)
+    # w2v = dict(zip(model.wv.index2word, model.wv.syn0))
+    # w2v_train_X, w2v_test_X = getAvgDocVectors(w2v, train_X, train_y)
+    # w2v_tfIdf_train_X, w2v_tf_Idf_test_X = getTfIdfWeightedAvgDocVectors(w2v, train_X, train_y)
+
+    # load computed features (saves time: rather than execute everytime)
     
+    w2v_train_X, w2v_test_X = np.loadtxt("data/w2v_train_X.txt"), np.loadtxt("data/w2v_test_X.txt")
+    w2v_tfIdf_train_X, w2v_tf_Idf_test_X = np.loadtxt("data/w2v_tfIdf_train_X.txt"), np.loadtxt("data/w2v_tfIdf_test_X.txt")
     
     featuresets = {
          # the train, and test vectors must be supplied here.

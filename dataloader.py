@@ -34,7 +34,7 @@ def loadDataCombinedColumns(path='./data/Combined_News_DJIA.csv'):
     """
     data = pd.read_csv(path, parse_dates = True, index_col = 0, verbose =True, keep_default_na=False) 
     data_y = data["Label"]
-    data_X = data.iloc[:,1:26].apply(lambda headline:cleanString(' '.join(headline)), axis=1)
+    data_X = data.iloc[:,1:26].apply(lambda headline:cleanString(' '.join(str(headline))), axis=1)
     
     test_X  = data_X['2015-01-02':'2016-07-01']
     train_X = data_X['2008-08-08':'2014-12-31']
